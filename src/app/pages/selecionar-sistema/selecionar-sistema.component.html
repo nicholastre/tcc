@@ -1,0 +1,11 @@
+<section>
+  <form [formGroup]="form">
+    <select formControlName="selectSystem">
+      <option value="">Listagem de sistemas</option>
+      <option value="valid" selected>Valid option</option>
+      <option value="invalid">Invalid option</option>
+    </select>
+  </form>
+
+  <button class="button-type-1" type="submit" (click)="redirect(['..','criar-sistema'])"> Criar Sistema</button>
+</section>

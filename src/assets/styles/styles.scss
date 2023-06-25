@@ -1,0 +1,141 @@
+@import "includes";
+
+body {
+  background-color: $color-primary;
+  padding: 30px;
+  margin: 0;
+
+  @media (min-width: 1200px) {
+    padding: 60px;
+  }
+}
+
+.input-container{
+  margin-bottom: 25px;
+
+  @media (min-width: 768px) {
+    margin-right: 40px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+.input-component {
+
+  label {
+    display: block;
+    font-size: 16px;
+  }
+  input {
+    display: block;
+    border: none;
+    outline: none;
+    padding: 10px;
+    background-color: $color-secondary;
+
+    &::placeholder {
+      color: $color-primary;
+    }
+  }
+}
+
+select {
+  padding: 10px;
+  background-color: $color-secondary;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  width: 100%;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.button-type-1 {
+  border-radius: 8px;
+  padding: 10px;
+  background-color: $color-secondary;
+  font-weight: 700;
+  font-size: 16px;
+  border: 1px solid transparent;
+  outline: none;
+  cursor: pointer;
+  transition: 400ms;
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-secondary;
+    border-color: $color-secondary;
+  }
+}
+
+.sections {
+  p {
+    color: $color-tertiary;
+    font-size: 16px;
+  }
+  .section-item-inputs {
+    padding-left: 20px;
+  }
+}
+
+.add-button {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-tertiary;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  margin-left: 5px;
+}
+
+
+.remove-button{
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-quaternary;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  margin-left: 5px;
+}
+
+.ficha-header {
+  margin-bottom: 60px;
+
+  .input-component {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.section-item {
+  margin-bottom: 60px;
+
+  .input-component {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+
+.calculos{
+  .input-wrapper{
+
+    .input-component {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}
+
+.error-message{
+  margin: 0;
+  color: $color-quaternary;
+}

@@ -1,0 +1,174 @@
+<div class="page-criar-sistema">
+  <form [formGroup]="form">
+    <h1>Cabeçalho</h1>
+
+    <section class="input-wrapper ficha-header" formGroupName="cabecalho">
+      <div class="input-container">
+        <div class="input-component">
+          <input
+            formControlName="nomeSistema"
+            type="text"
+            id="nomeSistema"
+            placeholder="Digite o nome do sistema"
+          />
+        </div>
+        <small
+          class="error-message"
+          *ngIf="form.get('cabecalho')?.get('nomeSistema')?.invalid"
+          >Campo Obrigatório</small
+        >
+      </div>
+      <div class="input-container">
+        <div class="input-component">
+          <input
+            formControlName="linkSistema"
+            type="text"
+            id="linkSistema"
+            placeholder="Digite o link do sistema"
+          />
+        </div>
+        <small
+          class="error-message"
+          *ngIf="form.get('cabecalho')?.get('linkSistema')?.invalid"
+          >Campo Obrigatório</small
+        >
+      </div>
+      <div class="input-container">
+        <div class="input-component">
+          <input
+            formControlName="criadorSistema"
+            type="text"
+            id="criadorSistema"
+            placeholder="Digite o nome do criador"
+          />
+        </div>
+        <small
+          class="error-message"
+          *ngIf="form.get('cabecalho')?.get('criadorSistema')?.invalid"
+          >Campo Obrigatório</small
+        >
+      </div>
+    </section>
+
+    <section class="sections" formArrayName="sessoes">
+      <p>
+        Caso queira adicionar uma nova sessão clique no botão de + ao lado do
+        nome da sessão. OBS: Sessão de habilidades já inclusa. não é necessário
+        adicionar uma nova
+      </p>
+      <div
+        class="section-item"
+        *ngFor="let control of controlFormArraySessoes.controls; let i = index"
+        [formGroupName]="i"
+      >
+        <div class="input-container">
+          <div class="input-component">
+            <input
+              formControlName="nomeSessao"
+              type="text"
+              placeholder="Digite o nome da Sessão"
+            />
+
+            <button class="add-button" (click)="addSection()" *ngIf="i === 0">
+              +
+            </button>
+            <button
+              class="remove-button"
+              (click)="removeSection(i, 'sessoes')"
+              *ngIf="i > 0"
+            >
+              -
+            </button>
+          </div>
+          <small
+            class="error-message"
+            *ngIf="control.get('nomeSessao')?.invalid"
+            >Campo Obrigatório</small
+          >
+        </div>
+        <div class="section-item-inputs">
+          <p>Adicione quantos elementos achar necessário para esta sessão</p>
+          <div
+            class="input-wrapper"
+            formArrayName="atributos"
+            *ngIf="controlFormArrayAtributos(i).length > 0"
+          >
+            <div
+              class="input-container"
+              *ngFor="
+                let atributo of controlFormArrayAtributos(i).controls;
+                let j = index
+              "
+            >
+              <div class="input-component">
+                <input
+                  [formControlName]="j"
+                  type="text"
+                  placeholder="Digite o nome do atributo"
+                />
+                <button
+                  class="add-button"
+                  (click)="addFormControlAtributos(i)"
+                  *ngIf="j === 0"
+                >
+                  +
+                </button>
+                <button
+                  class="remove-button"
+                  (click)="removeFormControl(i, j)"
+                  *ngIf="j > 0"
+                >
+                  -
+                </button>
+              </div>
+              <small class="error-message" *ngIf="atributo.invalid"
+                >Campo Obrigatório</small
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="calculos">
+      <h2>Valores para calculos automaticos</h2>
+      <div class="input-wrapper" formArrayName="calculos">
+        <div
+          class="input-container"
+          *ngFor="
+            let control of controlFormArrayCalculos.controls;
+            let i = index
+          "
+        >
+          <div class="input-component">
+            <input
+              [formControlName]="i"
+              type="text"
+              placeholder="Digite a formula de calculo"
+            />
+            <button
+              class="add-button"
+              (click)="addCalcFormControl()"
+              *ngIf="i === 0"
+            >
+              +
+            </button>
+            <button
+              class="remove-button"
+              (click)="removeSection(i, 'calculos')"
+              *ngIf="i > 0"
+            >
+              -
+            </button>
+          </div>
+          <small class="error-message" *ngIf="control.invalid"
+            >Campo Obrigatório</small
+          >
+        </div>
+      </div>
+    </section>
+  </form>
+  <div class="button-container">
+    <button class="button-type-1" (click)="submit()">Salvar</button>
+  </div>
+</div>

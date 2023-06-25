@@ -1,0 +1,95 @@
+@mixin xxxxs {
+    @media only screen and (max-width: ($bp-xxxs - 1)) {
+        @content;
+    }
+}
+
+@mixin xxxs {
+    @media only screen and (min-width: $bp-xxxs) {
+        @content;
+    }
+}
+
+@mixin xxs {
+    @media only screen and (min-width: $bp-xxs) {
+        @content;
+    }
+}
+
+@mixin xs {
+    @media only screen and (min-width: $bp-xs) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media only screen and (min-width: $bp-sm) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media only screen and (min-width: $bp-md) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media only screen and (min-width: $bp-lg) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media only screen and (min-width: $bp-xl) {
+        @content;
+    }
+}
+
+@mixin xxl {
+    @media only screen and (min-width: $bp-xxl) {
+        @content;
+    }
+}
+
+@mixin transition($css-attribute: $attribute, $animation-duration: $duration, $type-animation: $animation) {
+    -webkit-transition: $css-attribute $animation-duration $type-animation;
+    -moz-transition: $css-attribute $animation-duration $type-animation;
+    -o-transition: $css-attribute $animation-duration $type-animation;
+    transition: $css-attribute $animation-duration $type-animation;
+}
+
+@mixin font-antialiased {
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: "liga";
+}
+
+@mixin no-user-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@mixin rotate($rotation-degree: $degree) {
+    -o-transform: rotate($rotation-degree);
+    -ms-transform: rotate($rotation-degree);
+    -moz-transform: rotate($rotation-degree);
+    -webkit-transform: rotate($rotation-degree);
+    transform: rotate($rotation-degree);
+}
+
+@mixin no-appearance {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+}
