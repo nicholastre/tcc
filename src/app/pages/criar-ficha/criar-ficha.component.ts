@@ -11,6 +11,7 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
 export class CriarFichaComponent implements OnInit {
   public form: FormGroup;
   public sessoes = this.localStorageService.getObject('sistema').sessoes;
+  public calculos = this.localStorageService.getObject('sistema').calculos;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -38,22 +39,43 @@ export class CriarFichaComponent implements OnInit {
         alinhamento: this.formBuilder.control('', Validators.required),
         idade: this.formBuilder.control('', Validators.required),
       }),
-      sessoes: this.formBuilder.array([
-      ]),
+      sessoes: this.formBuilder.array([]),
       calculos: this.formBuilder.array([]),
+      habilidades: this.formBuilder.array([
+        this.formBuilder.group({
+          nomeHabilidade: this.formBuilder.control('', Validators.required),
+          descricaoHabilidade: this.formBuilder.control(
+            '',
+            Validators.required
+          ),
+        }),
+      ]),
     });
 
     this.form.patchValue({ ...this.localStorageService.getObject('sistema') });
 
     this.sessoes.forEach((element: any, index: number) => {
-      console.log(index,'index')
       this.controlFormArraySessoes.push(this.newSectionForm());
-      this.addFormControlAtributos(index,element.atributos.length +1);
+      this.addFormControlAtributos(index, element.atributos.length + 1);
     });
-    console.log(this.form);
+    for (let index = 0; index < this.calculos.length; index++) {
+      this.controlFormArrayCalculos.push(this.newCalcForm());
+    }
   }
   get controlFormArraySessoes(): FormArray {
     return this.form.get('sessoes') as FormArray;
+  }
+
+  get controlFormArrayCalculos(): FormArray {
+    return this.form.get('calculos') as FormArray;
+  }
+  get controlFormArrayHabilidades(): FormArray {
+    return this.form.get('habilidades') as FormArray;
+  }
+
+  public newCalcForm() {
+    const meuFormControl = this.formBuilder.control('', Validators.required);
+    return meuFormControl;
   }
 
   public controlFormArrayAtributos(index: number) {
@@ -69,15 +91,14 @@ export class CriarFichaComponent implements OnInit {
     }
   }
 
-  public exibeNomeSessoes(index : number) {
+  public exibeNomeSessoes(index: number) {
     return this.sessoes[index].nomeSessao;
   }
-  public exibeNomeAtributo(indexSessao : number,indexAtributo:number) {
+  public exibeNomeAtributo(indexSessao: number, indexAtributo: number) {
     return this.sessoes[indexSessao].atributos[indexAtributo];
   }
-
-  public teste(value: any) {
-    console.log(value, 'teste');
+  public exibeNomeCalculo(indexCalculo: number) {
+    return this.calculos[indexCalculo];
   }
 
   public genereteAtributos(value: number) {
@@ -92,7 +113,20 @@ export class CriarFichaComponent implements OnInit {
     });
   }
 
-  public submit(){
-    console.log(this.form)
+  public newHabilidadeForm(): FormGroup {
+    const meuFormControl = this.formBuilder.control('', Validators.required);
+    return new FormGroup({
+      nomeHabilidade: meuFormControl,
+      descricaoHabilidade: meuFormControl,
+    });
+  }
+
+  public addHabilidadeFormControl() {
+    this.controlFormArrayHabilidades.push(this.newHabilidadeForm());
+  }
+
+  public removeHabilidade(i: number) {
+    this.controlFormArrayHabilidades.removeAt(i);
+    return;
   }
 }

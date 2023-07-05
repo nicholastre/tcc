@@ -2,10 +2,11 @@
   <form [formGroup]="form">
     <select formControlName="selectSystem">
       <option value="">Listagem de sistemas</option>
-      <option value="valid" selected>Valid option</option>
-      <option value="invalid">Invalid option</option>
+      <option *ngFor="let item of sistemas" [value]="item.value">{{item.value}}</option>
     </select>
   </form>
-
-  <button class="button-type-1" type="submit" (click)="redirect(['..','criar-sistema'])"> Criar Sistema</button>
+  <div class="buttons">
+    <button class="button-type-1" type="submit" (click)="redirect(['..','criar-sistema'])"> Criar Sistema</button>
+    <button class="button-type-1" type="submit"> Criar ficha</button>
+  </div>
 </section>

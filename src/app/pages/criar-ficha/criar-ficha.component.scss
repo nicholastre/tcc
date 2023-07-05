@@ -18,5 +18,15 @@
       display: flex;
       flex-direction: column;
     }
+
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .remove-button{
+      right: -25px;
+      top: 19px;
+    }
   }
 }

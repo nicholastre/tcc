@@ -125,11 +125,77 @@
       </div>
     </section>
 
-    <section class="calculos" formArrayName="calculos">
-      <h2>Valores para calculos automaticos</h2>
+    <section class="calculos">
+      <h2>Valores para calculos de atributos</h2>
+      <div class="section-item-inputs">
+        <div class="input-wrapper" formArrayName="calculos">
+          <div
+            class="input-container"
+            *ngFor="
+              let calculo of controlFormArrayCalculos.controls;
+              let j = index
+            "
+          >
+            <div class="input-component">
+              <label>{{ exibeNomeCalculo(j) }}</label>
+              <input [formControlName]="j" type="text" />
+            </div>
+            <small class="error-message" *ngIf="calculo.invalid"
+              >Campo Obrigatório</small
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="calculos">
+      <h2>Habilidades</h2>
+      <p class="color-green">Adicione pelo menos uma habilidade</p>
+      <button
+        class="add-button no-margin margin-bottom-20"
+        (click)="addHabilidadeFormControl()"
+      >
+        +
+      </button>
+      <div class="section-item-inputs">
+        <div class="input-wrapper" formArrayName="habilidades">
+          <div
+            class="input-container position-relative"
+            *ngFor="
+              let habilidade of controlFormArrayHabilidades.controls;
+              let i = index
+            "
+            [formGroupName]="i"
+          >
+            <div class="input-component">
+              <label>{{ "Habilidade " + (i + 1) }}</label>
+              <input
+                [formControlName]="'nomeHabilidade'"
+                type="text"
+                placeholder="Digite o nome da habilidade"
+              />
+            </div>
+            <button
+              class="remove-button position-absolute"
+              (click)="removeHabilidade(i)"
+              *ngIf="i > 0"
+            >
+              -
+            </button>
+            <div class="input-component">
+              <textarea
+                [formControlName]="'descricaoHabilidade'"
+                placeholder="Digite o descricao da habilidade"
+              ></textarea>
+              <small class="error-message" *ngIf="habilidade.invalid"
+                >Campo Obrigatório</small
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </form>
   <div class="button-container">
-    <button class="button-type-1" (click)="submit()">Salvar</button>
+    <button class="button-type-1">Salvar</button>
   </div>
 </div>

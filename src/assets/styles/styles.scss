@@ -27,7 +27,7 @@ body {
     display: block;
     font-size: 16px;
   }
-  input {
+  input, textarea {
     display: block;
     border: none;
     outline: none;
@@ -37,6 +37,10 @@ body {
     &::placeholder {
       color: $color-primary;
     }
+  }
+
+  textarea{
+    height: 100px;
   }
 }
 
@@ -138,4 +142,25 @@ select {
 .error-message{
   margin: 0;
   color: $color-quaternary;
+}
+
+.color-green{
+  color: $color-tertiary;
+}
+
+
+.no-margin{
+  margin: 0;
+}
+
+.margin-bottom-20{
+  margin-bottom: 20px;
+}
+
+.position-relative{
+  position: relative;
+}
+
+.position-absolute{
+  position: absolute;
 }
