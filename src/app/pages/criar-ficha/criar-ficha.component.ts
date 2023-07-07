@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
@@ -56,7 +56,7 @@ export class CriarFichaComponent implements OnInit {
 
     this.sessoes.forEach((element: any, index: number) => {
       this.controlFormArraySessoes.push(this.newSectionForm());
-      this.addFormControlAtributos(index, element.atributos.length + 1);
+      this.addFormControlAtributos(index, element.atributos.length +1);
     });
     for (let index = 0; index < this.calculos.length; index++) {
       this.controlFormArrayCalculos.push(this.newCalcForm());
@@ -85,8 +85,8 @@ export class CriarFichaComponent implements OnInit {
   }
 
   public addFormControlAtributos(i: number, qtd: number) {
-    const control = this.formBuilder.control('', Validators.required);
     for (let index = 1; index < qtd; index++) {
+      const control = this.formBuilder.control('', Validators.required);
       this.controlFormArrayAtributos(i).push(control);
     }
   }
@@ -101,13 +101,7 @@ export class CriarFichaComponent implements OnInit {
     return this.calculos[indexCalculo];
   }
 
-  public genereteAtributos(value: number) {
-    const meuFormControl = this.formBuilder.control('', Validators.required);
-    for (let index = 0; index < value; index++) {}
-  }
-
   public newSectionForm() {
-    const meuFormControl = this.formBuilder.control('', Validators.required);
     return new FormGroup({
       atributos: new FormArray([]),
     });
