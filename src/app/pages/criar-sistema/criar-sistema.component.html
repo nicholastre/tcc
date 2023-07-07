@@ -132,8 +132,15 @@
 
     <section class="calculos">
       <h2>Valores para calculos de atributos</h2>
-      <p class="color-green">Adicione quantos valores calculados devem ter na ficha</p>
-      <button class="add-button no-margin margin-bottom-20" (click)="addCalcFormControl()">+</button>
+      <p class="color-green">
+        Adicione quantos valores calculados devem ter na ficha
+      </p>
+      <button
+        class="add-button no-margin margin-bottom-20"
+        (click)="addCalcFormControl()"
+      >
+        +
+      </button>
       <div class="input-wrapper" formArrayName="calculos">
         <div
           class="input-container"

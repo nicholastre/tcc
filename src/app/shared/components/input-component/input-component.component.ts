@@ -1,12 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { FormGroup, FormGroupDirective } from '@angular/forms';
 
 @Component({
   selector: 'app-input-component',
   templateUrl: './input-component.component.html',
   styleUrls: ['./input-component.component.scss']
 })
-export class InputComponentComponent implements OnInit {
+export class InputComponentComponent {
   @Input()
   public type = 'text';
   @Input()
@@ -19,9 +19,4 @@ export class InputComponentComponent implements OnInit {
   public hasLabel: false;
   constructor() { }
 
-  ngOnInit() {
-
-  }
-  
-  
 }

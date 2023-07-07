@@ -4,15 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'selecionar-sistema',
+    redirectTo: 'criar-sistema',
     pathMatch: 'full',
-  },
-  {
-    path: 'selecionar-sistema',
-    loadChildren: () =>
-      import('./pages/selecionar-sistema/selecionar-sistema.module').then(
-        (m) => m.SelecionarSistemaModule
-      ),
   },
   {
     path: 'criar-sistema',

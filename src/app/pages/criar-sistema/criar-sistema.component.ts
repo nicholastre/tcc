@@ -84,7 +84,8 @@ export class CriarSistemaComponent implements OnInit {
     const control = this.formBuilder.control('',Validators.required);
     this.controlFormArrayAtributos(i).push(control);
   }
-  public removeFormControl(i: any,j:any){
+
+  public removeFormControl(i: number,j:number){
     this.controlFormArrayAtributos(i).removeAt(j);
   }
 
