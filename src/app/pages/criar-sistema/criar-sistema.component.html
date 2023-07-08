@@ -1,16 +1,12 @@
 <div class="page-criar-sistema">
   <form [formGroup]="form">
-    <h1>Cabeçalho</h1>
+    <h1 class="title-color">Cabeçalho</h1>
 
     <section class="input-wrapper ficha-header" formGroupName="cabecalho">
       <div class="input-container">
         <div class="input-component">
-          <input
-            formControlName="nomeSistema"
-            type="text"
-            id="nomeSistema"
-            placeholder="Digite o nome do sistema"
-          />
+          <label class="label-color">Digite o nome do sistema</label>
+          <input formControlName="nomeSistema" type="text" id="nomeSistema" />
         </div>
         <small
           class="error-message"
@@ -20,12 +16,8 @@
       </div>
       <div class="input-container">
         <div class="input-component">
-          <input
-            formControlName="linkSistema"
-            type="text"
-            id="linkSistema"
-            placeholder="Digite o link do sistema"
-          />
+          <label class="label-color">Digite o link do sistema</label>
+          <input formControlName="linkSistema" type="text" id="linkSistema" />
         </div>
         <small
           class="error-message"
@@ -35,11 +27,11 @@
       </div>
       <div class="input-container">
         <div class="input-component">
+          <label class="label-color">Digite o nome do criador</label>
           <input
             formControlName="criadorSistema"
             type="text"
             id="criadorSistema"
-            placeholder="Digite o nome do criador"
           />
         </div>
         <small
@@ -51,9 +43,15 @@
     </section>
 
     <section class="sections" formArrayName="sessoes">
-      <p>
-        Caso queira adicionar uma nova sessão clique no botão de + ao lado do
-        nome da sessão. OBS: Sessão de habilidades já inclusa. não é necessário
+      <div class="display-flex align-items-center">
+        <h2 class="title-color">Seções</h2>
+        <button class="add-button" (click)="addSection()">
+          Adicionar nova seção
+        </button>
+      </div>
+      <p class="p-info-session">
+        Caso queira adicionar uma nova seção clique no botão de + ao lado do
+        nome da seção. OBS: seção de habilidades já inclusa. não é necessário
         adicionar uma nova
       </p>
       <div
@@ -61,24 +59,16 @@
         *ngFor="let control of controlFormArraySessoes.controls; let i = index"
         [formGroupName]="i"
       >
-        <div class="input-container">
-          <div class="input-component">
-            <input
-              formControlName="nomeSessao"
-              type="text"
-              placeholder="Digite o nome da Sessão"
-            />
-
-            <button class="add-button" (click)="addSection()" *ngIf="i === 0">
-              +
-            </button>
-            <button
-              class="remove-button"
+        <div class="input-container nomeSessao">
+          <div class="input-component position-relative">
+            <label class="label-color">Digite o nome da seção</label>
+            <input formControlName="nomeSessao" type="text" />
+            <i
+              class="fa fa-minus-circle remove-button"
+              aria-hidden="true"
               (click)="removeSection(i, 'sessoes')"
               *ngIf="i > 0"
-            >
-              -
-            </button>
+            ></i>
           </div>
           <small
             class="error-message"
@@ -87,12 +77,11 @@
           >
         </div>
         <div class="section-item-inputs">
-          <p>Adicione quantos elementos achar necessário para esta sessão</p>
-          <button
-            class="add-button no-margin margin-bottom-20"
-            (click)="addFormControlAtributos(i)"
-          >
-            +
+          <div class="display-flex align-items-center">
+            <p>Adicione quantos elementos achar necessário para esta seção</p>
+          </div>
+          <button class="add-button margin-bottom-20 no-margin" (click)="addFormControlAtributos(i)">
+            Adicionar novo atributo
           </button>
 
           <div
@@ -107,19 +96,15 @@
                 let j = index
               "
             >
-              <div class="input-component">
-                <input
-                  [formControlName]="j"
-                  type="text"
-                  placeholder="Digite o nome do atributo"
-                />
-                <button
-                  class="remove-button"
+              <div class="input-component position-relative">
+                <label class="label-color">Digite o nome do atributo</label>
+                <input [formControlName]="j" type="text" />
+                <i
+                  class="fa fa-minus-circle remove-button"
+                  aria-hidden="true"
                   (click)="removeFormControl(i, j)"
                   *ngIf="j > 0"
-                >
-                  -
-                </button>
+                ></i>
               </div>
               <small class="error-message" *ngIf="atributo.invalid"
                 >Campo Obrigatório</small
@@ -131,16 +116,11 @@
     </section>
 
     <section class="calculos">
-      <h2>Valores para calculos de atributos</h2>
-      <p class="color-green">
-        Adicione quantos valores calculados devem ter na ficha
-      </p>
-      <button
-        class="add-button no-margin margin-bottom-20"
-        (click)="addCalcFormControl()"
-      >
-        +
-      </button>
+      <h2 class="title-color">Valores para cálculos de atributos</h2>
+      <div class="info-calculo">
+        <p>Adicione quantos valores calculados devem ter na ficha</p>
+        <button class="add-button no-margin margin-bottom-20" (click)="addCalcFormControl()">Adicionar novo calculo</button>
+      </div>
       <div class="input-wrapper" formArrayName="calculos">
         <div
           class="input-container"
@@ -149,20 +129,18 @@
             let i = index
           "
         >
-          <div class="input-component">
+          <div class="input-component position-relative">
+            <label class="label-color">exemplo: HP</label>
             <input
               [formControlName]="i"
               type="text"
-              placeholder="exemplo: HP"
             />
-
-            <button
-              class="remove-button"
+            <i
+              class="fa fa-minus-circle remove-button"
+              aria-hidden="true"
               (click)="removeSection(i, 'calculos')"
               *ngIf="i > 0"
-            >
-              -
-            </button>
+            ></i>
           </div>
           <small class="error-message" *ngIf="control.invalid"
             >Campo Obrigatório</small

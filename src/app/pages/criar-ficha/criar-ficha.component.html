@@ -1,11 +1,11 @@
 <div class="page-criar-ficha">
   <form [formGroup]="form">
-    <h1>Cabeçalho</h1>
+    <h1 class="title-color">Cabeçalho</h1>
 
     <section class="input-wrapper ficha-header" formGroupName="cabecalho">
       <div class="input-container">
         <div class="input-component">
-          <label>Nome do jogador</label>
+          <label class="label-color">Nome do jogador</label>
           <input formControlName="nomeJogador" type="text" id="nomeJogador" />
         </div>
         <small
@@ -17,7 +17,7 @@
 
       <div class="input-container">
         <div class="input-component">
-          <label>Nome do personagem</label>
+          <label class="label-color">Nome do personagem</label>
           <input
             formControlName="nomePersonagem"
             type="text"
@@ -33,7 +33,7 @@
 
       <div class="input-container">
         <div class="input-component">
-          <label>Nome do sistema</label>
+          <label class="label-color">Nome do sistema</label>
           <input formControlName="nomeSistema" type="text" id="nomeSistema" />
         </div>
         <small
@@ -45,7 +45,7 @@
 
       <div class="input-container">
         <div class="input-component">
-          <label>Link do sistema</label>
+          <label class="label-color">Link do sistema</label>
           <input formControlName="linkSistema" type="text" id="linkSistema" />
         </div>
         <small
@@ -57,7 +57,7 @@
 
       <div class="input-container">
         <div class="input-component">
-          <label>Criador do sistema</label>
+          <label class="label-color">Criador do sistema</label>
           <input
             formControlName="criadorSistema"
             type="text"
@@ -73,7 +73,7 @@
 
       <div class="input-container">
         <div class="input-component">
-          <label>Alinhamento</label>
+          <label class="label-color">Alinhamento</label>
           <input formControlName="alinhamento" type="text" id="alinhamento" />
         </div>
         <small
@@ -85,7 +85,7 @@
 
       <div class="input-container">
         <div class="input-component">
-          <label>Idade</label>
+          <label class="label-color">Idade</label>
           <input formControlName="idade" type="text" id="idade" />
         </div>
         <small
@@ -102,7 +102,7 @@
         *ngFor="let sessoes of controlFormArraySessoes.controls; let i = index"
         [formGroupName]="i"
       >
-        <h2>{{ exibeNomeSessoes(i) }}</h2>
+        <h2 class="title-color">{{ exibeNomeSessoes(i) }}</h2>
         <div class="section-item-inputs">
           <div class="input-wrapper" formArrayName="atributos">
             <div
@@ -113,7 +113,7 @@
               "
             >
               <div class="input-component">
-                <label>{{ exibeNomeAtributo(i, j) }}</label>
+                <label class="label-color">{{ exibeNomeAtributo(i, j) }}</label>
                 <input [formControlName]="j" type="text" />
               </div>
               <small class="error-message" *ngIf="atributo.invalid"
@@ -126,7 +126,7 @@
     </section>
 
     <section class="calculos">
-      <h2>Valores para calculos de atributos</h2>
+      <h2 class="title-color">Valores para cálculos de atributos</h2>
       <div class="section-item-inputs">
         <div class="input-wrapper" formArrayName="calculos">
           <div
@@ -137,7 +137,7 @@
             "
           >
             <div class="input-component">
-              <label>{{ exibeNomeCalculo(j) }}</label>
+              <label class="label-color">{{ exibeNomeCalculo(j) }}</label>
               <input [formControlName]="j" type="text" />
             </div>
             <small class="error-message" *ngIf="calculo.invalid"
@@ -148,44 +148,38 @@
       </div>
     </section>
     <section class="calculos">
-      <h2>Habilidades</h2>
-      <p class="color-green">Adicione pelo menos uma habilidade</p>
-      <button
-        class="add-button no-margin margin-bottom-20"
-        (click)="addHabilidadeFormControl()"
-      >
-        +
-      </button>
+      <div class="display-flex align-items-center">
+        <h2 class="title-color">Habilidades</h2>
+        <button class="add-button" (click)="addHabilidadeFormControl()">
+          Adicionar nova habilidade
+        </button>
+      </div>
+
       <div class="section-item-inputs">
         <div class="input-wrapper" formArrayName="habilidades">
           <div
-            class="input-container position-relative"
+            class="input-container habilidade-width position-relative"
             *ngFor="
               let habilidade of controlFormArrayHabilidades.controls;
               let i = index
             "
             [formGroupName]="i"
           >
-            <div class="input-component">
-              <label>{{ "Habilidade " + (i + 1) }}</label>
-              <input
-                [formControlName]="'nomeHabilidade'"
-                type="text"
-                placeholder="Digite o nome da habilidade"
-              />
+            <div class="input-component position-relative">
+              <label class="label-color">Nome da Habilidade</label>
+              <input [formControlName]="'nomeHabilidade'" type="text" />
             </div>
-            <button
-              class="remove-button position-absolute"
+            <i
+              class="fa fa-minus-circle remove-button"
+              aria-hidden="true"
               (click)="removeHabilidade(i)"
               *ngIf="i > 0"
-            >
-              -
-            </button>
+            ></i>
             <div class="input-component">
-              <textarea
-                [formControlName]="'descricaoHabilidade'"
-                placeholder="Digite o descricao da habilidade"
-              ></textarea>
+              <label class="label-color margin-top-10"
+                >Descricão da habilidade</label
+              >
+              <textarea [formControlName]="'descricaoHabilidade'"></textarea>
               <small class="error-message" *ngIf="habilidade.invalid"
                 >Campo Obrigatório</small
               >

@@ -11,11 +11,25 @@
       @media (min-width: 768px) {
         flex-direction: row;
         flex-wrap: wrap;
+        padding-left: 60px;
       }
     }
   }
   .button-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+  }
+
+  .p-info-session{
+    @media (min-width: 768px) {
+      padding-left: 40px;
+      width: 526px;
+    }
+  }
+
+  .section-item{
+    @media (min-width: 768px) {
+      padding-left: 40px;
+    }
   }
 }

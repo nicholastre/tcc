@@ -10,7 +10,7 @@ body {
   }
 }
 
-.input-container{
+.input-container {
   margin-bottom: 25px;
 
   @media (min-width: 768px) {
@@ -22,25 +22,29 @@ body {
   }
 }
 .input-component {
-
   label {
     display: block;
     font-size: 16px;
   }
-  input, textarea {
+  input,
+  textarea {
     display: block;
-    border: none;
+    border-radius: 100px;
+    border: 1px solid #ebeef2;
     outline: none;
-    padding: 10px;
-    background-color: $color-secondary;
+    padding:
+    12px 24px 12px 24px;
+    background-color: #ffffff;
 
     &::placeholder {
       color: $color-primary;
     }
   }
 
-  textarea{
-    height: 100px;
+  textarea {
+    border-radius: 28px;
+    height: 270px;
+    resize: none;
   }
 }
 
@@ -60,33 +64,33 @@ select {
 .button-type-1 {
   border-radius: 8px;
   padding: 10px;
-  background-color: $color-secondary;
+  background-color: $color-tertiary;
   font-weight: 700;
   font-size: 16px;
   border: 1px solid transparent;
   outline: none;
   cursor: pointer;
   transition: 400ms;
-
-  &:hover {
-    background-color: $color-primary;
-    color: $color-secondary;
-    border-color: $color-secondary;
-  }
 }
 
 .sections {
   p {
-    color: $color-tertiary;
-    font-size: 16px;
+    font-size: 12px;
+    font-weight: 700;
   }
   .section-item-inputs {
-    padding-left: 20px;
   }
 }
 
+.info-calculo{
+  @media (min-width: 768px) {
+    padding-left: 60px;
+  }
+}
 .add-button {
   padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,24 +98,23 @@ select {
   font-size: 14px;
   cursor: pointer;
   border: none;
-  margin-left: 5px;
+  margin-left: 14px;
+  @media (min-width: 768px) {
+    padding: 14px 42px 14px 42px;
+  }
 }
 
-
-.remove-button{
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $color-quaternary;
+.remove-button {
+  color: $color-quaternary;
   font-size: 14px;
   cursor: pointer;
-  border: none;
-  margin-left: 5px;
+  position: absolute;
+  right: 10px;
+  top: 40px;
 }
 
 .ficha-header {
-  margin-bottom: 60px;
+  margin-bottom: 24px;
 
   .input-component {
     display: flex;
@@ -120,47 +123,84 @@ select {
 }
 
 .section-item {
-  margin-bottom: 60px;
+  margin-top: 24px;
+  margin-bottom: 40px;
 
   .input-component {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
   }
-}
 
-
-.calculos{
-  .input-wrapper{
-
-    .input-component {
-      display: flex;
-      flex-direction: row;
+  .nomeSessao {
+    @media (min-width: 768px) {
+      width: 526px;
     }
   }
 }
 
-.error-message{
+.calculos {
+  .input-wrapper {
+    .input-component {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.error-message {
   margin: 0;
+  margin-left: 15px;
   color: $color-quaternary;
 }
 
-.color-green{
-  color: $color-tertiary;
-}
-
-
-.no-margin{
+.no-margin {
   margin: 0;
 }
 
-.margin-bottom-20{
+.margin-bottom-20 {
   margin-bottom: 20px;
 }
 
-.position-relative{
+.position-relative {
   position: relative;
 }
 
-.position-absolute{
+.position-absolute {
   position: absolute;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.title-color {
+  color: $color-tertiary;
+}
+
+.label-color {
+  margin-left: 15px;
+  color: #c0c0c0;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+
+.margin-negative{
+  margin-left: -40px;
+}
+
+.margin-top-10{
+  margin-top: 10px;
+}
+
+
+.habilidade-width{
+  @media (min-width: 768px) {
+    width: 300px;
+  }
 }
